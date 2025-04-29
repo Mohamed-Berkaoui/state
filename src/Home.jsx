@@ -5,9 +5,12 @@ function Home({ state }) {
     <div className="home">
       {products
         .filter((element) =>
-          element.title.toLowerCase().includes(state.toLowerCase())
+          element.title.toLowerCase().includes(state.title.toLowerCase())
+        )//[]
+        .filter((element) =>
+          state.category == "all" ? true : element.category == state.category
         )
-        .map((prod) => (
+        .map((prod) => ( 
           <ProductBox product={prod} />
         ))}
     </div>
